@@ -2,24 +2,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static String nomeMes(int mes) {
-        return switch (mes) {
-            case 1 -> "Janeiro";
-            case 2 -> "Fevereiro";
-            case 3 -> "Março";
-            case 4 -> "Abril";
-            case 5 -> "Maio";
-            case 6 -> "Junho";
-            case 7 -> "Julho";
-            case 8 -> "Agosto";
-            case 9 -> "Setembro";
-            case 10 -> "Outubro";
-            case 11 -> "Novembro";
-            case 12 -> "Dezembro";
-            default -> "";
-        };
-    }
-
     public static void main(String[] args) {
         Scanner myScanner = new Scanner(System.in);
 
@@ -60,9 +42,26 @@ public class Main {
         final int lastMouth = 12;
         double acumuladoINSS = 0;
         double acumuladoIRPF = 0;
+        String nomeDoMes;
 
         for (int index = firstMouth; index <= lastMouth; index++) {
-            System.out.print("Informe o salário de " + nomeMes(index) + ": R$");
+            switch (index) {
+                case 1 -> nomeDoMes = "Janeiro";
+                case 2 -> nomeDoMes = "Fevereiro";
+                case 3 -> nomeDoMes = "Março";
+                case 4 -> nomeDoMes = "Abril";
+                case 5 -> nomeDoMes = "Maio";
+                case 6 -> nomeDoMes = "Junho";
+                case 7 -> nomeDoMes = "Julho";
+                case 8 -> nomeDoMes = "Agosto";
+                case 9 -> nomeDoMes = "Setembro";
+                case 10 -> nomeDoMes = "Outubro";
+                case 11 -> nomeDoMes =  "Novembro";
+                case 12 -> nomeDoMes =  "Dezembro";
+                default -> nomeDoMes = "";
+            }
+
+            System.out.print("Informe o salário de " + nomeDoMes + ": R$");
             double salario = myScanner.nextDouble();
 
             double inss;
@@ -93,7 +92,8 @@ public class Main {
                 irpf = (baseCalculo * 0.275) - 869.36;
             }
             acumuladoIRPF += irpf;
-            System.out.println("Mês: " + nomeMes(index));
+
+            System.out.println("Mês: " + nomeDoMes);
             System.out.printf("INSS: R$ %.2f\n", inss);
             System.out.printf("IRPF: R$ %.2f\n", irpf);
         }
